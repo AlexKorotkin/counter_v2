@@ -5,9 +5,7 @@ import {Button2} from "./Button2";
 
 function App() {
     let [startValue, setStartValue] = useState('0');
-    // let [currentStartValue, setCurrentStartValue] = useState('0');
     let [maxValue, setMaxValue] = useState('1');
-    // let [maxValue, setMaxValue] = useState('1');
     let [errorMaxValue, setErrorMaxValue] = useState(false);
     let [errorStartValue, setErrorStartValue] = useState(false);
     let [inc, setInc] = useState(0);
@@ -16,6 +14,7 @@ function App() {
 
 
     function onChangeStartHandler(e: ChangeEvent<HTMLInputElement>) {
+
         setStartValue(e.currentTarget.value);
 
         if (+e.currentTarget.value < +maxValue) {
@@ -34,6 +33,7 @@ function App() {
     }
 
     function onChangeMaxHandler(e: ChangeEvent<HTMLInputElement>) {
+
         setMaxValue(e.currentTarget.value);
 
         if (+startValue >= +e.currentTarget.value) {
@@ -59,15 +59,9 @@ function App() {
         else setErrorStartValue(false);
     }
 
-    const increment  =() =>
-    {
-        setInc(inc+1)
-    }
+    const increment  =() => setInc(inc+1)
 
-    const reset  = () =>
-    {
-        setInc (+startValue)
-    }
+    const reset  = () => setInc(+startValue)
 
     return (
         <div className="App">
@@ -95,13 +89,9 @@ function App() {
                 <div className="action border">
                     <Button2 name={'Inc'}  func={increment} disabled={!errorSetButton || +inc>=+maxValue || errorMaxValue || errorStartValue}/>
                     <Button2 name={'Reset'} func={reset} disabled={!errorSetButton || (+inc<=+startValue || errorMaxValue || errorStartValue)}/>
-                    {/*<Button name={'Inc'} disabled ={(errorMaxValue || errorStartValue)? inc >= Number(maxValue): false} errorSetButton={errorSetButton} setErrorSetButton ={setErrorSetButton}  startValue={startValue} maxValue={maxValue} setStartValue={setStartValue} setMaxValue={setMaxValue} inc={inc} setInc ={setInc}/>*/}
-                    {/*<Button name={'Reset'} disabled ={inc <= Number(startValue) && errorSetButton } errorSetButton={errorSetButton} setErrorSetButton ={setErrorSetButton}  startValue={startValue} maxValue={maxValue} setStartValue={setStartValue} setMaxValue={setMaxValue} inc={inc} setInc ={setInc}/>*/}
                 </div>
             </div>
         </div>
     )
 }
 export default App;
-// {(errorMaxValue && setErrorStartValue) ? <div>Incorrect value!</div>: ''}
-// {errorSetButton? inc : <div>enter values and press 'set'</div>}
